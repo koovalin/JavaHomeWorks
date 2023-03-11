@@ -1,29 +1,29 @@
 package HomeWorks;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Scanner;
 
 public class homeWork_2 {
-    public static void main(String[] args){
+    public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
-        System.out.println("Введи строку проверки: ");
-        if(isPalindrome(scan.next())){
-            System.out.println("Строка палиндром!");
-        }
-        else{
-            System.out.println("Строка не палиндром!");
-        }
+        System.out.println("Введите значение для записи в файл: ");
+        String text = scan.nextLine();
+        writeInFile(mergeText(text, 100));
     }
-    public static boolean isPalindrome(String text) {
-        String clean = text.replaceAll("\\s+", "").toLowerCase();
-        int length = clean.length();
-        int forward = 0;
-        int backward = length - 1;
-        while (backward > forward) {
-            char forwardChar = clean.charAt(forward++);
-            char backwardChar = clean.charAt(backward--);
-            if (forwardChar != backwardChar)
-                return false;
+
+    public static String mergeText(String text, int loop) {
+        return String.valueOf(text).repeat(Math.max(0, loop));
+    }
+    public static void writeInFile(String text){
+        try(FileWriter writer = new FileWriter("src/main/resources/dz.txt", false))
+        {
+            writer.write(text);
+            writer.flush();
+            System.out.println("Запись внесена!");
         }
-        return true;
+        catch(IOException ex){
+            System.out.println(ex.getMessage());
+        }
     }
 }
