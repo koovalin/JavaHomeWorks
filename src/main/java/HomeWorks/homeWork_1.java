@@ -1,22 +1,25 @@
 package HomeWorks;
 
+import java.util.Scanner;
+
 public class homeWork_1 {
     public static void main(String[] args) {
-        int[] array = new int[]{552, 284, 552, 738, 839, 555};
-        minAndMaxInArr(array);
+        Scanner reader = new Scanner(System.in);
+        System.out.println("Введите год: ");
+        int year = Integer.parseInt(reader.next());
+        if (isLeapYear(year)) {
+            System.out.println("Год весокосный!");
+        }
+        else{
+            System.out.println("Год не весокосный!");
+        }
     }
 
-    private static void minAndMaxInArr(int[] someArr) {
-        int max = someArr[0];
-        int min = someArr[0];
-        for (int i: someArr){
-            if (i < min){
-                min = i;
-            }
-            if (i > max){
-                max = i;
-            }
-        }
-        System.out.printf("Min = %s\nMax = %s", min,max);
+    public static boolean isLeapYear(int year) {
+        if (year % 4 != 0) {
+            return false;
+        } else if (year % 400 == 0) {
+            return true;
+        } else return year % 100 != 0;
     }
 }
