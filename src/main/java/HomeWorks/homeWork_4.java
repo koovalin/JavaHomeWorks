@@ -4,7 +4,8 @@ import java.util.*;
 
 public class homeWork_4 {
     public static void main(String[] args) {
-        ex1();
+//        ex1();
+        ex2();
     }
 
     private static void ex1() {
@@ -76,6 +77,19 @@ public class homeWork_4 {
                     System.out.printf("Слово %s на позиции %d удалено!", oldWord, num);
                 }
             }
+        }
+    }
+
+    private static void ex2() {
+        LinkedList<String> wordsList = new LinkedList<>();
+        Collections.addAll(wordsList, "first", "second", "third", "fourth");
+        System.out.println(wordsList);
+        reverseLinkedList(wordsList);
+        System.out.println(wordsList);
+    }
+    public static void reverseLinkedList (LinkedList list) {
+        for(int i = 0, mid = list.size()/2, j = list.size() - 1; i < mid; i++, j--) {
+            list.set(i, list.set(j, list.get(i)));
         }
     }
 }
